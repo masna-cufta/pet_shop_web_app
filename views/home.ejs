@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<%- include('partials/header') %>
+    <body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="main-nav">
+                <ul class="main-links">
+                    <li class="active"><a href="/"><i class="fas fa-home"></i> Početna</a></li>
+                </ul>
+                
+                <h3 class="nav-section-title">Kategorije</h3>
+                <ul class="categories-list">
+                    <% Object.keys(categoriesData).forEach(categoryId => { %>
+                        <li>
+                            <a href="#" 
+                               data-category="<%= categoryId %>">
+                                <%= categoriesData[categoryId].name %>
+                            </a>
+                        </li>
+                    <% }); %>
+                </ul>
+                
+                <div class="bottom-links">
+                    <h3 class="nav-section-title">Kontakt</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-envelope"></i> Newsletter</a></li>
+                        <li><a href="#"><i class="fas fa-bell"></i> Pretplati se</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="welcome-section">
+                <div class="welcome-header">
+                    <h2>Dobrodošli u Pet Shop Ljubimac Express!</h2>
+                    <p>Ljubimac Express nije Vaš najobičniji pet shop - mi smo kraljevstvo
+                        raznovrsnih životinja! Od veličanstvenih medvjeda i plemenitih majmuna,
+                        preko vjernih pasa i mačaka, pa sve do egzotičnih zmija i žaba, i još mnooogo toga
+                        - kod nas ćete pronaći svog savršenog ljubimca. Naša misija je da spojimo ljubitelje životinja
+                        sa njihovim idealnim prijateljem, pružajući jedinstveno iskustvo koje slavi raznolikost
+                        i čaroliju životinjskoga svijeta. Dobrodošli u Ljubimac Express, gdje svaka
+                        životinja priča svoju priču!
+                    </p>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="/images/naslovna.png" alt="Sveee životinje">
+                    
+                </div>
+                
+                <div class="featured-categories">
+                    <h3>Istražite naše kategorije</h3>
+                    <div class="categories-grid">
+                        <div class="category-card" data-category="1">
+                            <img src="/images/kategorije/horse-3254102_1280.jpg" alt="Kategorija 1">
+                            <h4>Kopitari</h4>
+                        </div>
+                        <div class="category-card" data-category="2">
+                            <img src="/images/kategorije/mosquito-3643252_1280.jpg" alt="Kategorija 2">
+                            <h4>Kukci</h4>
+                        </div>
+                        <div class="category-card" data-category="3">
+                            <img src="/images/kategorije/cat-1583462_1280.jpg" alt="Kategorija 3">
+                            <h4>Mačke</h4>
+                        </div>
+                        <div class="category-card" data-category="4">
+                            <img src="/images/kategorije/baboon-47367_1280.jpg" alt="Kategorija 4">
+                            <h4>Majmuni</h4>
+                        </div>
+                        <div class="category-card" data-category="5">
+                            <img src="/images/kategorije/animal-1293281_1280.jpg" alt="Kategorija 5">
+                            <h4>Medvjedi</h4>
+                        </div>
+                        <div class="category-card" data-category="6">
+                            <img src="/images/kategorije/german-shepherd-1420404_1280.jpg" alt="Kategorija 6">
+                            <h4>Psi</h4>
+                        </div>
+                        <div class="category-card" data-category="7">
+                            <img src="/images/kategorije/animal-2099057_1280.jpg" alt="Kategorija 7">
+                            <h4>Ptice</h4>
+                        </div>
+                        <div class="category-card" data-category="8">
+                            <img src="/images/kategorije/fish-1294822_1280.jpg" alt="Kategorija 8">
+                            <h4>Ribe</h4>
+                        </div>
+                        <div class="category-card" data-category="9">
+                            <img src="/images/kategorije/silhouette-3272088_1280.jpg" alt="Kategorija 9">
+                            <h4>Zmije</h4>
+                        </div>
+                        <div class="category-card" data-category="10">
+                            <img src="/images/kategorije/frog-3199601_1280.jpg" alt="Kategorija 10">
+                            <h4>Žabe</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="products-section" id="products-section" style="display: none;">
+                <div class="section-header">
+                    <h2 id="current-category-title"></h2>
+                    <button class="back-button" id="back-to-home">Povratak na početnu</button>
+                </div>               
+                <div class="products-grid" id="products-grid"></div>
+            </section>
+        </main>
+    </div>
+
+<div id="categories-data" data-json='<%= JSON.stringify(categoriesData) %>'></div>
+
+<script>
+    const categoriesDataElement = document.getElementById("categories-data");
+    const categoriesData = JSON.parse(categoriesDataElement.getAttribute("data-json"));
+</script>
+<script src="/scripts/main.js"></script>
+<div id="cart-json" style="display:none;"><%= JSON.stringify(session.cart || {}) %></div>
+
+</body>
+
+<%- include('partials/footer') %>
+
+</html>

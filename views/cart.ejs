@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Košarica - Pet Shop</title>
+  <link rel="stylesheet" href="/styles/cart.css" />
+</head>
+<body>
+<div class="header-icons">
+  <a href="/" class="search-icon">
+    <img src="/images/closer-1297401_1280.png" alt="Magnif" class="magni-icon" />
+  </a>
+  <a href="/cart" class="cart-icon">
+    <img src="/images/shopping-cart-349544_1280.png" alt="Cart" class="cart-icon" />
+    <span class="cart-count">
+      <%= session.cart ? Object.values(session.cart).reduce((a, b) => a + b, 0) : 0 %>
+    </span>
+  </a>
+  <a class="logo" href="/">
+    <img src="/images/logo.png" alt="Logo" />
+  </a>
+</div>
+
+
+  <div class="app-container">
+    <main class="cart-container">
+      <h1>Vaša košarica</h1>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-summary">
+        <p>Ukupno artikala: <span id="summary-count">0</span></p>
+        <button class="checkout-btn">Nastavi na plaćanje</button>
+      </div>
+      <a href="/" class="back-btn">Natrag na početnu</a>
+    </main>
+  </div>
+
+  <script src="/scripts/cart.js"></script>
+</body>
+
+<%- include('partials/footer') %>
+</html>

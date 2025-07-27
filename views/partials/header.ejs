@@ -1,0 +1,23 @@
+<header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    
+</head>
+    <div class="header-icons">
+        <a href="#" class="search-icon">
+            <img src="/images/closer-1297401_1280.png" alt="Search" class="magni-icon">
+        </a>
+        <a href="/cart" class="cart-icon">
+            <img src="/images/shopping-cart-349544_1280.png" alt="Cart" class="cart-icon">
+            <span class="cart-count">
+                <%= session.cart ? Object.values(session.cart).reduce((s, q) => s + q, 0) : 0 %>
+            </span>
+        </a>
+        <a class="logo">
+            <img src="/images/logo.png" alt="Pet Shop Logo">
+        </a>
+    </div>
+</header>
